@@ -1,0 +1,47 @@
+﻿{% extends 'chairman/m-index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h5>All Member</h5>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home col-black"></i> Green Society</a></li>
+                            <li class="breadcrumb-item">Member</li>
+                            <li class="breadcrumb-item active">All Member</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+<div class="container-fluid">
+    <div class="row clearfix"> 
+        <div class="col-lg-12">
+            <div class="tab-content m-t-10">
+                    <div class="row clearfix">
+                        {% for i in all_member %}
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="card xl-blue member-card doctor">
+                                <div class="body">
+                                    <div class="member-thumb">
+                                        <img src="{{i.pic.url}}" class="img-fluid" alt="profile-image" />                               
+                                    </div>
+                                    <div class="detail">
+                                        <h4>{{i.firstname}} {{i.lastname}}</h4>
+                                        <p class="text-muted">Member</p>
+                                        <p class="text-muted">{{i.house_no}}</p>                           
+                                        <a href="{% url 'm-specific-user' pk=i.id %}" class="btn btn-round"> View Profile</a><hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

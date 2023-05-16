@@ -1,0 +1,84 @@
+﻿{% extends 'chairman/m-index.html' %}
+{% load static %}
+{% block css %}
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\blog.css' %}">
+{% endblock %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h5>Rent/Sell Post</h5>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home col-black"></i> Green Society</a></li>
+                            <li class="breadcrumb-item">Post</li>
+                            <li class="breadcrumb-item active">Rent/Sell Post</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                <div class="blog-page">
+                    {% if p_msg %}
+            <div class="alert alert-success" role="alert">
+                {{p_msg}}
+            </div>
+            {% endif %}
+<form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="product" placeholder="Product Name">
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-6">
+                            <input type="text" list="listid" class="form-control show-tick" name="option" placeholder="Select Categories ----">
+                            <datalist id="listid">
+                                <option label="Rent" value="Rent">
+                                <option label="Sell" value="Sell">
+                                <option label="Buy" value="Buy">
+                                ...    
+                            </datalist>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="contact" placeholder="Contact No..." required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="price" placeholder="Product Price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="pic">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <input type="submit" name="submit" class="btn btn-primary btn-round" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+</div>
+</form>           
+</div>
+            </div>
+</section>
+{% endblock %}

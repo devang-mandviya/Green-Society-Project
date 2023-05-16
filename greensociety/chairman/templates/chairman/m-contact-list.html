@@ -1,0 +1,102 @@
+﻿{% extends 'chairman/m-index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h5>Contact List</h5>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home col-black"></i> Green Society</a></li>
+                            <li class="breadcrumb-item active">Contact List</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                <div class="contact">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body">
+                    <ul class="nav nav-tabs padding-0">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Doctors">Chairman</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Patients">Society Member</a></li>
+                    </ul>                                                
+                </div>                   
+            </div>
+        </div>           
+    </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body">                        
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Doctors">
+                            <div class="table-responsive">
+                                <table class="table table-hover m-b-0 c_list">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>                                    
+                                            <th>Phone</th>
+                                        </tr>
+                                    </thead>
+                                    {% for c in c_contact %}
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="{{c.pic.url}}" class="rounded-circle avatar" alt="">
+                                                <p class="c_name">{{c.firstname}} {{c.lastname}}</p>
+                                            </td>
+                                            <td>
+                                                <span class="phone"><i class="zmdi zmdi-phone m-r-10 col-black"></i>{{c.contact}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="Patients">
+                            
+                            <div class="table-responsive">
+                                <table class="table table-hover m-b-0 c_list">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th> 
+                                            <th>Occupation</th>                                   
+                                            <th data-breakpoints="xs">Phone No.</th>                                    
+                                            <th data-breakpoints="xs sm md">Block No.</th>
+                                        </tr>
+                                    </thead>
+                                    {% for i in m_contact %}
+                                    <tbody>                                            
+                                        <tr>
+                                            <td>
+                                                <img src="{{i.pic.url}}" class="rounded-circle avatar" alt="">
+                                                <p class="c_name">{{i.firstname}} {{i.lastname}}</p>
+                                            </td>
+                                            <td>
+                                                <span class="c_occupation"><i class="zmdi zmdi-label m-r-10"></i>{{i.occupation}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>{{i.contact}}</span>
+                                            </td>
+                                            <td>
+                                                <address><i class="zmdi zmdi-pin"></i>{{i.house_no}}</address>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
+            </div>
+</section>
+{% endblock%}

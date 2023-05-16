@@ -1,0 +1,66 @@
+﻿{% extends 'chairman/m-index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h5>Maintainance</h5>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'm-index' %}"><i class="zmdi zmdi-home col-black"></i> Green Society</a></li>
+                            <li class="breadcrumb-item">All Maintainance</li>
+                            <li class="breadcrumb-item active">Maintainance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2><strong>All Maintainance</strong></h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Contact No.</th>
+                                    <th>Month</th>
+                                    <th>Amount</th>
+                                    <th>Due Date</th>                                            
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in mall %}
+                                <tr>
+                                    <td>{{i.id}}</td>
+                                    <td>{{i.member_id.firstname}}</td>
+                                    <td>{{i.member_id.contact}}</td>
+                                    <td>{{i.title}}</td>
+                                    <td>{{i.amount}}</td>
+                                    <td>{{i.duedate}}</td>
+                                    {% if i.status == "PENDING" %}
+                                        <td style="color: crimson;">{{i.status}}</td>
+                                    {% else %}
+                                        <td style="color: green;">{{i.status}}</td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+</section>
+{% endblock%}

@@ -1,0 +1,83 @@
+﻿{% extends 'chairman/index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h5>Member Profile</h5>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i> Green Society</a></li>
+                            <li class="breadcrumb-item active"> Member Profile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix profile-page">
+        <div class="col-lg-4 col-md-12">
+            <div class="card profile-header">
+                <div class="body text-center">
+                    <div class="profile-image"> <img src="{{specific_uid.pic.url}}" alt=""> </div>
+                    <div>
+                        <h4 class="m-b-0"><strong>{{specific_uid.firstname}} {{specific_uid.lastname}}</strong></h4>
+                        <span class="job_post">{{specific_uid.user_id.email}}</span>
+                        <p>{{specific_uid.contact}}</p>
+                    </div>
+                </div>                    
+            </div>              
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#about">About</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane body active" id="about">
+                        <h6>Informations</h6>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><strong>Name :~ </strong> {{specific_uid.firstname}} {{specific_uid.lastname}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Contact :~ </strong> {{specific_uid.contact}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Email :~ </strong> {{specific_uid.user_id.email}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Gender :~ </strong> {{specific_uid.gender}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Birthdate :~</strong> {{specific_uid.birthdate}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Contact :~</strong> {{specific_uid.contact}}</p>
+                            </li>
+                            <li>
+                                <p><strong>House no :~</strong> {{specific_uid.house_no}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Occupation :~</strong> {{specific_uid.occupation}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Working Place :~</strong> {{specific_uid.working_place}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Family Members :~</strong> {{specific_uid.family_mambers}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicale Details :~</strong> {{specific_uid.vehicale_details}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
